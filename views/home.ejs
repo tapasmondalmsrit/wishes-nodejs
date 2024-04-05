@@ -52,7 +52,7 @@
           console.log("wish-data", wish);
 
           // post api call
-          fetch("http://localhost:5000/sendWish", {
+          fetch("https://wishes-nodejs.onrender.com/sendWish", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -75,7 +75,7 @@
         console.log("item", item, item.innerText);
         alert(item.innerText);
 
-        fetch("http://localhost:5000/remove/" + item.innerText, {
+        fetch("https://wishes-nodejs.onrender.com/remove/" + item.innerText, {
           method: "delete",
         })
           .then((res) => {

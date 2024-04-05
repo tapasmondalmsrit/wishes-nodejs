@@ -7,7 +7,7 @@ module.exports = (app) => {
   let data = ["eat", "sleep", "code", "playing", "Tapas Mondal"];
   app.get("/", (req, res) => {
     Wish.find({}).then((res2) => {
-      console.log("wishlist", res2);
+      console.log("wishlist rendering");
       res.render("home", { wish: res2 });
     });
     //res.render("home", { wish: data });
