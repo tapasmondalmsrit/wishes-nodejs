@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>About Page</title>
+  </head>
+
+  <body>
+    <%- include('D:/tutorial/MERN/NODEJS BASIC/views/partials/nav') %>
+    <h2>About Page</h2>
+    <p><%= wish[0] %></p>
+    <p><%= wish[1] %></p>
+    <ul>
+      <% wish.forEach(item=>{ %>
+      <li><%= item %></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

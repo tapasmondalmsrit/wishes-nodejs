@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('partials/nav') %>
+    <div class="container">
+      <h2>Home page</h2>
+      <div>
+        <form id="myForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required /><br /><br />
+
+          <br />
+
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+
+      <ul>
+        <% wish.forEach(item=>{ %>
+        <li onClick="removeElement(this)"><%= item.wish %></li>
+        <% }) %>
+      </ul>
+    </div>
+    <script>
+      document
+        .getElementById("myForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form data
+          var formData = new FormData(this);
+
+          // Convert formData to JSON
+          var wish = [];
+
+          formData.forEach(function (value, key) {
+            console.log("value, key", value, key);
+            wish.push(value);
+          });
+
+          // Display form data
+          console.log("wish-data", wish);
+
+          // post api call
+          fetch("http://localhost:5000/sendWish", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            // here body needs to be a json  value
+            body: JSON.stringify(wish),
+          })
+            .then((res) => {
+              return res.json();
+            })
+            .then((res2) => {
+              location.reload();
+              console.log("post-res2", res2);
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        });
+      function removeElement(item) {
+        console.log("item", item, item.innerText);
+        alert(item.innerText);
+
+        fetch("http://localhost:5000/remove/" + item.innerText, {
+          method: "delete",
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((res2) => {
+            location.reload();
+            console.log("delete-res2", res2);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>

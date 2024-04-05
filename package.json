@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-basic",
+  "version": "1.0.0",
+  "description": "CURD OPERATION",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.0",
+    "nodemon": "^3.1.0"
+  }
+}
