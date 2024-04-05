@@ -13,16 +13,16 @@ module.exports = (app) => {
     //res.render("home", { wish: data });
   });
   app.get("/about", (req, res) => {
-    res.render("about/about", { wish: data });
+    res.render("about", { wish: data });
   });
   app.get("/user/:id", (req, res) => {
-    res.render("user/user", { data: data, id: req.params.id });
+    res.render("user", { data: data, id: req.params.id });
   });
 
   // post route ------------------------------------------------------
   app.post("/sendWish", (req, res) => {
     const body = req.body;
-    // console.log("sendWish-body", body);
+    console.log("sendWish-body", body);
     // data.push(...body);
     // res.send(body);
 
@@ -37,7 +37,7 @@ module.exports = (app) => {
   // Delete-----------------------------------------------------------
   app.delete("/remove/:id", (req, res) => {
     const wishname = req.params.id;
-    // console.log("sendWish-body", wishname, data);
+    console.log("sendWish-body", wishname);
     // data = data.filter((item) => {
     //   if (item) {
     //     if (item !== wishname) return item;

@@ -4,6 +4,8 @@ const app = express();
 const bodyParser = require("body-parser");
 // mongoose package is used to connect with server
 const mongoose = require("mongoose");
+// npm install cors
+const cors = require("cors");
 // connection string whic will get form monodb Atlas
 const { mongourl } = require("./config/keys");
 
@@ -23,6 +25,15 @@ app.use((req, res, next) => {
 
   next();
 });
+
+// Example specifying allowed origins
+app.use(
+  cors({
+    origin: "http://localhost:5000", // Allow requests from this origin
+    methods: ["GET", "POST", "DELETE"], // Allow only specified HTTP methods
+    credentials: true, // Allow sending cookies and authentication headers
+  })
+);
 
 require("./route")(app);
 
