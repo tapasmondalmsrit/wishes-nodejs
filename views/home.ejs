@@ -73,7 +73,6 @@
         });
       function removeElement(item) {
         console.log("item", item, item.innerText);
-        alert(item.innerText);
 
         fetch("https://wishes-nodejs.onrender.com/remove/" + item.innerText, {
           method: "delete",
